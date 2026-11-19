@@ -1,0 +1,92 @@
+@import "@fontsource-variable/cormorant-garamond/wght.css";
+@import "@fontsource-variable/cormorant-garamond/wght-italic.css";
+@import "@fontsource-variable/dm-sans/wght.css";
+@import "@fontsource/dm-mono/400.css";
+@import "@fontsource/dm-mono/500.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-ivory font-sans text-charcoal antialiased;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+
+  ::selection {
+    background: #244735;
+    color: #f7f6f0;
+  }
+
+  :focus-visible {
+    outline: 2px solid #244735;
+    outline-offset: 3px;
+  }
+
+  .on-forest :focus-visible {
+    outline-color: #f7f6f0;
+  }
+
+  dialog::backdrop {
+    background: rgba(34, 40, 34, 0.55);
+  }
+}
+
+@layer components {
+  /* Page gutter shared by every section */
+  .page {
+    @apply mx-auto w-full max-w-page px-6 sm:px-10 lg:px-16;
+  }
+
+  /* Small uppercase label used for section names, dates and captions */
+  .label {
+    @apply font-sans text-[0.6875rem] font-medium uppercase tracking-label;
+  }
+
+  /* Monospaced detail: dates, index numbers and small technical labels */
+  .mono {
+    @apply font-mono text-xs uppercase tracking-[0.08em];
+  }
+
+  .display {
+    @apply font-serif font-normal;
+    font-variant-numeric: lining-nums;
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+  }
+
+  .link {
+    @apply underline decoration-sage decoration-1 underline-offset-[5px] transition-colors duration-300 hover:text-forest hover:decoration-forest;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 border border-forest bg-forest px-6 py-3 text-sm font-medium text-ivory transition-colors duration-300 hover:bg-charcoal hover:border-charcoal;
+  }
+
+  .btn-quiet {
+    @apply inline-flex items-center justify-center gap-2 border border-charcoal/25 px-6 py-3 text-sm font-medium text-charcoal transition-colors duration-300 hover:border-forest hover:text-forest;
+  }
+}
